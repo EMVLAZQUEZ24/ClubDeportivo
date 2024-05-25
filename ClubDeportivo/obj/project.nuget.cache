@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "48nNQcCQtP8=",
+  "success": true,
+  "projectFilePath": "c:\\Users\\Ezequiel\\Desktop\\ClubDeportivo\\ClubDeportivo\\ClubDeportivo.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ezequiel\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.4\\microsoft.netcore.app.ref.8.0.4.nupkg.sha512",
+    "C:\\Users\\Ezequiel\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.4\\microsoft.windowsdesktop.app.ref.8.0.4.nupkg.sha512",
+    "C:\\Users\\Ezequiel\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.4\\microsoft.aspnetcore.app.ref.8.0.4.nupkg.sha512",
+    "C:\\Users\\Ezequiel\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.4\\microsoft.netcore.app.host.win-x64.8.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}
