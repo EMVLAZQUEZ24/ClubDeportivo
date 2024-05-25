@@ -1,0 +1,15 @@
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\bin\Debug\net8.0\ClubDeportivo.exe
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\bin\Debug\net8.0\ClubDeportivo.deps.json
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\bin\Debug\net8.0\ClubDeportivo.runtimeconfig.json
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\bin\Debug\net8.0\ClubDeportivo.dll
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\bin\Debug\net8.0\ClubDeportivo.pdb
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0\ClubDeportivo.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0\ClubDeportivo.AssemblyInfoInputs.cache
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0\ClubDeportivo.AssemblyInfo.cs
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0\ClubDeportivo.csproj.CoreCompileInputs.cache
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0\ClubDeportivo.sourcelink.json
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0\ClubDeportivo.dll
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0\refint\ClubDeportivo.dll
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0\ClubDeportivo.pdb
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0\ClubDeportivo.genruntimeconfig.cache
+c:\Users\Ezequiel\Desktop\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0\ref\ClubDeportivo.dll
