@@ -44,5 +44,10 @@ namespace ClubDeportivo
 		}
 		
 		/* metodos */
+		/*MÉTODO PARA SABER LA EDAD, CATEGORÍA Y ÚLTIMO MES DE PAGO DE UNA PERSONA INSCRIPTA*/
+		/*MÉTODO SUJETO A MODIFICACIONES*/
+		private void InformacionInscripto(){
+			Console.WriteLine("Edad " + edad + "\n" + "Categoría " + categoria + "\n" + "Último mes de pago del inscripto " + ultMesPago);
+		}
 	}
 }

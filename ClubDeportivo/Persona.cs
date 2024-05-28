@@ -36,5 +36,11 @@ namespace ClubDeportivo
 		}
 		
 		/* metodos */
+		/*MÉTODO PARA SABER LA INFORMACIÓN Y DNI DE LA PERSONA*/
+		/*MÉTODO SUJETO A MODIFICACIONES*/
+		protected void InformacionPersona(){
+			Console.WriteLine("Nombre " + nombre + "DNI " + dni);
+			
+		}
 	}
 }

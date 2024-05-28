@@ -13,11 +13,12 @@ namespace ClubDeportivo
 	/// <summary>
 	/// Description of clubCupoExcepcion.
 	/// </summary>
-	public class clubCupoExcepcion : Exception
+	public class ClubCupoExcepcion : Exception
 	{
 		public string motivo;
 
-		public clubCupoExcepcion(string m)
+		public ClubCupoExcepcion(string m)
+		/*public clubCupoExcepcion(string m)*/
 		{
 			motivo = m;
 		}
