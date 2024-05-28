@@ -101,7 +101,7 @@ namespace ClubDeportivo
 		}
 		
 		/* metodos */
-		public int existeDeportista(int dni)
+		public int ExisteDeportista(int dni)
 		{
 			Inscripto dep;
 			
@@ -118,7 +118,7 @@ namespace ClubDeportivo
 			return -1;
 		}		
 		
-		public void agregarDeportista(string nombre, int dni, int edad, int categoria, int nroSocio)
+		public void AgregarDeportista(string nombre, int dni, int edad, int categoria, int nroSocio)
 		{	
 			if(nroSocio == 0)
 			{
@@ -132,22 +132,22 @@ namespace ClubDeportivo
 			cupoLibre -= 1;			
 		}
 		
-		public void eliminarDeportista(int indice)
+		public void EliminarDeportista(int indice)
 		{
 			deportistas.RemoveAt(indice);
 		}
 		
-		public void asignarEntrenador(Entrenador ent)
+		public void AsignarEntrenador(Entrenador ent)
 		{
 			this.entrenador = ent;
 		}
 
-        public void removerEntrenador()
+        public void RemoverEntrenador()
         {
             this.entrenador = null;
         }
 
-        public void listaDeportistas()
+        public void ListaDeportistas()
 		{
 			foreach (var ins in deportistas) {
                 if (ins is Socio)
@@ -162,7 +162,7 @@ namespace ClubDeportivo
 			}
 		}		
 		
-		public float valorCuota(int dni)
+		public float ValorCuota(int dni)
 		{
 			foreach (var ins in deportistas) 
 			{
@@ -185,7 +185,7 @@ namespace ClubDeportivo
 			return 0;
 		}
 		
-		public bool pagoCuota(int dni)
+		public bool PagoCuota(int dni)
 		{
             DateTime ahora = DateTime.Now;
             int mesActual = ahora.Month;
@@ -203,3 +203,4 @@ namespace ClubDeportivo
 		}
 	}
 }
+/*ARREGLE LO DEL CamelCase*/

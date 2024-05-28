@@ -23,14 +23,14 @@ namespace ClubDeportivo
 			Club club;
 			club=new Club();
             //INSTANCIACIÓN PARA AGREGAR UN DEPORTE	
-			club.agregarDeporte("Futbol", 2010, 24, 1250, 10, "Miercoles", "18:00");			
-			club.agregarDeporte("Voley", 2011, 16, 1000, 15, "Sabados", "17:00");
-            club.agregarDeporte("Voley", 2012, 16, 1000, 15, "Martes", "16:00");
-            club.agregarDeporte("Voley", 2013, 16, 1000, 15, "Jueves", "17:00");
-            club.agregarDeporte("Tenis", 2015, 10, 1500, 5, "Jueves", "18:00");
-            club.agregarDeporte("Tenis", 2015, 10, 1500, 5, "Viernes", "14:00");
-            club.agregarDeporte("Futbol", 2011, 24, 1250, 10, "Miercoles", "18:00");
-            club.agregarDeporte("Futbol", 2012, 24, 1250, 10, "Lunes", "10:00");
+			club.AgregarDeporte("Futbol", 2010, 24, 1250, 10, "Miercoles", "18:00");			
+			club.AgregarDeporte("Voley", 2011, 16, 1000, 15, "Sabados", "17:00");
+            club.AgregarDeporte("Voley", 2012, 16, 1000, 15, "Martes", "16:00");
+            club.AgregarDeporte("Voley", 2013, 16, 1000, 15, "Jueves", "17:00");
+            club.AgregarDeporte("Tenis", 2015, 10, 1500, 5, "Jueves", "18:00");
+            club.AgregarDeporte("Tenis", 2015, 10, 1500, 5, "Viernes", "14:00");
+            club.AgregarDeporte("Futbol", 2011, 24, 1250, 10, "Miercoles", "18:00");
+            club.AgregarDeporte("Futbol", 2012, 24, 1250, 10, "Lunes", "10:00");
 
             //MENÚ DEL PROGRAMA
             do
@@ -203,7 +203,7 @@ namespace ClubDeportivo
                     selDeporte = int.Parse(Console.ReadLine());
                 }
 
-                club.nuevoInscripto(selDeporte - 1, nombreApellido, dni, edad, categoria, nroSocio);
+                club.NuevoInscripto(selDeporte - 1, nombreApellido, dni, edad, categoria, nroSocio);
 
 				Console.WriteLine("");				
 				Console.WriteLine("¿Desea continuar con la inscripción? S/N");
@@ -234,7 +234,7 @@ namespace ClubDeportivo
 			} while (Console.ReadLine().ToUpper() == "S");
 		}
 		//AGREGA UN DEPORTE
-		public static void agregarDeporte(Club club)
+		public static void AgregarDeporte(Club club)
 		{
 			string nombre, dia, hora;
 			int categoria, cupo, indice;
@@ -270,13 +270,13 @@ namespace ClubDeportivo
 				Console.WriteLine("Ingrese el porcentaje de descuento para Socios.");
 				descuentoSocio = float.Parse(Console.ReadLine());
 								
-				if((indice = club.existeDepYCat(nombre, categoria)) != -1)
+				if((indice = club.ExisteDepYCat(nombre, categoria)) != -1)
 				{
 					Console.WriteLine("El deporte \"{0}\" y la categoria {1} ya existe.", nombre, categoria);
 				}
 				else
 				{
-					club.agregarDeporte(nombre, categoria, cupo, cuota, descuentoSocio, dia, hora);
+					club.AgregarDeporte(nombre, categoria, cupo, cuota, descuentoSocio, dia, hora);
 					Console.WriteLine("El deporte se agrego correctamente.");
 				}
 				
@@ -326,9 +326,9 @@ namespace ClubDeportivo
                     selDeporte = int.Parse(Console.ReadLine());
                 }
 
-                if (club.estaVacioDeporte(selDeporte - 1) == true)
+                if (club.EstaVacioDeporte(selDeporte - 1) == true)
                 {
-                    club.eliminarDeporte(selDeporte - 1);
+                    club.EliminarDeporte(selDeporte - 1);
                     Console.WriteLine("El deporte elimino correctamente.");
                 }
                 else
@@ -360,7 +360,7 @@ namespace ClubDeportivo
                         Console.WriteLine("");
                         Console.WriteLine("Selecione el deporte.");
                         Console.WriteLine("");
-                        listaDep = club.listaDeportes();
+                        listaDep = club.ListaDeportes();
 
                         contador = 1;
                         foreach (Deporte dep in listaDep)
@@ -383,7 +383,7 @@ namespace ClubDeportivo
 						
 						Console.Clear();
 						Console.WriteLine("Lista de inscriptos a {0}.", ((Deporte)listaDep[selDeporte - 1]).Nombre);
-                        club.listaInscPorDep(((Deporte)listaDep[selDeporte - 1]).Nombre);
+                        club.ListaInscPorDep(((Deporte)listaDep[selDeporte - 1]).Nombre);
                         Console.WriteLine("");
                         Console.Write("Pulse una tecla para continuar . . . ");
                         Console.ReadKey(true);
@@ -393,7 +393,7 @@ namespace ClubDeportivo
 						// seleccion del deporte
                         Console.WriteLine("Selecione el deporte.");
                         Console.WriteLine("");
-                        listaDep = club.listaDeportes();
+                        listaDep = club.ListaDeportes();
 
                         contador = 1;
                         foreach (Deporte dep in listaDep)
@@ -418,7 +418,7 @@ namespace ClubDeportivo
                         Console.WriteLine("");
                         Console.WriteLine("Selecione la categoría.");
                         Console.WriteLine("");
-                        listaCat = club.listaCategoriaXDeporte(((Deporte)listaDep[selDeporte - 1]).Nombre);
+                        listaCat = club.ListaCategoriaXDeporte(((Deporte)listaDep[selDeporte - 1]).Nombre);
 
                         contador = 1;
                         foreach (Deporte dep in listaCat)
@@ -442,7 +442,7 @@ namespace ClubDeportivo
                         // impresion de la lista de inscriptos
                         Console.Clear();
                         Console.WriteLine("Lista de inscriptos a {0} en la categoría {1}", ((Deporte)listaDep[selDeporte - 1]).Nombre, ((Deporte)listaCat[selCategoria - 1]).Categoria);
-                        club.listaInscPorDepYCat(((Deporte)listaDep[selDeporte - 1]).Nombre, ((Deporte)listaCat[selCategoria - 1]).Categoria);
+                        club.ListaInscPorDepYCat(((Deporte)listaDep[selDeporte - 1]).Nombre, ((Deporte)listaCat[selCategoria - 1]).Categoria);
                         Console.WriteLine("");
                         Console.Write("Pulse una tecla para continuar . . . ");
                         Console.ReadKey(true);
@@ -451,7 +451,7 @@ namespace ClubDeportivo
 					case "3":
                         Console.Clear();
                         Console.WriteLine("Lista de todos los inscriptos.");
-						club.listaInscTotal();
+						club.ListaInscTotal();
                         Console.WriteLine("");
                         Console.Write("Pulse una tecla para continuar . . . ");
                         Console.ReadKey(true);
@@ -460,7 +460,7 @@ namespace ClubDeportivo
 					case "4":
                         Console.Clear();
                         Console.WriteLine("Lista de deudores.");
-						club.listaDeudores();
+						club.ListaDeudores();
                         Console.WriteLine("");
                         Console.Write("Pulse una tecla para continuar . . . ");
                         Console.ReadKey(true);
@@ -475,8 +475,9 @@ namespace ClubDeportivo
 				}                
             } while (selec != "9");
 		}
-		
-		public static void pagoCuota(Club club)
+		/*MODIFICACIÓN DE CAMELCASE
+        public staticvoid pagoCuota(Club Club*/
+		public static void PagoCuota(Club club)
 		{
 			int dni;
 			
@@ -493,14 +494,14 @@ namespace ClubDeportivo
 				dni = int.Parse(Console.ReadLine());				
 				//club.pagarCuota(dni);
 				
-				if(club.existeInscripto(dni) == true)
+				if(club.ExisteInscripto(dni) == true)
 				{
-					club.verValorCuota(dni);
+					club.VerValorCuota(dni);
 					
 					Console.WriteLine("¿Se procede a registrar el pago? S/N");
 					
 					if(Console.ReadLine().ToUpper() == "S"){
-						if(club.pagarCuota(dni))
+						if(club.PagarCuota(dni))
 						{
 							Console.WriteLine("Pago realizado.");
 						}
@@ -539,9 +540,9 @@ namespace ClubDeportivo
                 Console.WriteLine("Ingrese el número de DNI.");
                 dni = int.Parse(Console.ReadLine());
 
-                if (club.buscarEntrenador(dni) == -1)
+                if (club.BuscarEntrenador(dni) == -1)
                 {
-                    club.agregarEntrenador(nombre, dni);
+                    club.AgregarEntrenador(nombre, dni);
 
                     Console.WriteLine("Entrenador ingresado corectamente.");
                 }
@@ -573,13 +574,13 @@ namespace ClubDeportivo
                 Console.WriteLine("Ingrese el número de DNI.");
                 dni = int.Parse(Console.ReadLine());
 
-                if ((indiceEntrenador = club.buscarEntrenador(dni)) != -1)
+                if ((indiceEntrenador = club.BuscarEntrenador(dni)) != -1)
                 {
-                    club.eliminarEntrenador(indiceEntrenador);
+                    club.EliminarEntrenador(indiceEntrenador);
 
-                    if ((indiceDep = club.buscarEntrenadorDeporte(dni)) != -1)
+                    if ((indiceDep = club.BuscarEntrenadorDeporte(dni)) != -1)
 					{
-                        club.quitarEntrenadorDeporte(indiceDep, dni);
+                        club.QuitarEntrenadorDeporte(indiceDep, dni);
                     }					
                     
                     Console.WriteLine("Entrenador eliminado correctamete.");
@@ -613,7 +614,7 @@ namespace ClubDeportivo
                 Console.WriteLine("Ingrese el número de DNI.");
                 dni = int.Parse(Console.ReadLine());
 
-                if (club.buscarEntrenador(dni) != -1)
+                if (club.BuscarEntrenador(dni) != -1)
                 {
                     Console.WriteLine("Selecione el deporte que se le asignara.");
                     Console.WriteLine("");
@@ -640,7 +641,7 @@ namespace ClubDeportivo
                         selDeporte = int.Parse(Console.ReadLine());
                     }
 
-                    club.agregarEntrenador(selDeporte - 1, dni);
+                    club.AgregarEntrenador(selDeporte - 1, dni);
 
                     Console.WriteLine("Entrenador asignado correctamente.");
                 }
@@ -656,3 +657,5 @@ namespace ClubDeportivo
         }
     }
 }
+/*ARREGLE LO DEL CamelCase*/
+/*CAMELCASE SUJETO A MODIFICACIONES*/

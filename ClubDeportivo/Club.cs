@@ -17,7 +17,7 @@ namespace ClubDeportivo
 	/// </summary>
 	public class Club
 	{
-		private enum meses
+		private enum Meses
 		{
 		    Enero,
 		    Febrero,
@@ -53,7 +53,7 @@ namespace ClubDeportivo
         /* metodos */
 
         /* Entrenadores -----------------------------------------------------------*/
-       public int buscarEntrenador(int dni)
+       public int BuscarEntrenador(int dni)
 		{
 			Entrenador ent;
 			
@@ -69,29 +69,29 @@ namespace ClubDeportivo
 			return -1;
 		}
 		
-		public void agregarEntrenador(string nombre, int dni)
+		public void AgregarEntrenador(string nombre, int dni)
 		{
 			entrenadores.Add(new Entrenador(nombre, dni));
 		}
 		
-		public void eliminarEntrenador(int indice)
+		public void EliminarEntrenador(int indice)
 		{
             entrenadores.RemoveAt(indice);
         }
 
-		public void agregarEntrenador(int indice, int dni)
+		public void AgregarEntrenador(int indice, int dni)
 		{
 			foreach (Entrenador ent in entrenadores)
 			{
 				if(ent.Dni == dni)
 				{
-                    ((Deporte)deportes[indice]).asignarEntrenador(ent);
+                    ((Deporte)deportes[indice]).AsignarEntrenador(ent);
                 }
 			}			
         }
 		
 		/* Deportes -----------------------------------------------------------*/
-		public int existeDepYCat(string nombre, int categoria)
+		public int ExisteDepYCat(string nombre, int categoria)
 		{
 			Deporte dep;
 			
@@ -108,7 +108,7 @@ namespace ClubDeportivo
 			return -1;
 		}
 		
-		public bool estaVacioDeporte(int indice)
+		public bool EstaVacioDeporte(int indice)
 		{			
 			if(((Deporte)deportes[indice]).Deportistas.Count > 0)
 			{
@@ -120,23 +120,23 @@ namespace ClubDeportivo
 			}
 		}
 				
-		public void agregarDeporte(string nombre, int categoria, int cupo, float cuota, float descuentoSocio, string dia, string hora)
+		public void AgregarDeporte(string nombre, int categoria, int cupo, float cuota, float descuentoSocio, string dia, string hora)
 		{
 			deportes.Add(new Deporte(nombre, categoria, cupo, cuota, descuentoSocio, dia, hora));
 			
 		}
 		
-		public void eliminarDeporte(int indice)
+		public void EliminarDeporte(int indice)
 		{			
 			deportes.RemoveAt(indice);
 		}
 		
-		public int totalDeportes()
+		public int TotalDeportes()
 		{
 			return deportes.Count;
 		}
 
-        public ArrayList listaDeportes()
+        public ArrayList ListaDeportes()
         {
             ArrayList lista = new ArrayList();
             bool existe = false;
@@ -163,7 +163,7 @@ namespace ClubDeportivo
             return lista;
         }
 
-        public ArrayList listaCategoriaXDeporte(string deporte)
+        public ArrayList ListaCategoriaXDeporte(string deporte)
         {
             ArrayList lista = new ArrayList();
             bool existe = false;
@@ -188,34 +188,34 @@ namespace ClubDeportivo
             return lista;
         }
         
-        public void listaInscPorDep(string deporte)
+        public void ListaInscPorDep(string deporte)
 		{
 			foreach (Deporte dep in deportes) {
 				if(dep.Nombre == deporte)
 				{
-					dep.listaDeportistas();
+					dep.ListaDeportistas();
 				}
 			}
 		}
 		
-		public void listaInscPorDepYCat(string deporte, int categoria)
+		public void ListaInscPorDepYCat(string deporte, int categoria)
 		{
 			foreach (Deporte dep in deportes) {
 				if((dep.Nombre == deporte) && (dep.Categoria == categoria))
 				{
-					dep.listaDeportistas();
+					dep.ListaDeportistas();
 				}
 			}
 		}
 		
-		public void listaInscTotal()
+		public void ListaInscTotal()
 		{
 			foreach (Deporte dep in deportes) {
-				dep.listaDeportistas();
+				dep.ListaDeportistas();
 			}
 		}
 		
-		public void listaDeudores()
+		public void ListaDeudores()
 		{
 			DateTime ahora = DateTime.Now;
 			int mesActual = ahora.Month;
@@ -227,23 +227,23 @@ namespace ClubDeportivo
 						Console.WriteLine("{0} - Aún no a abonado ninguna cuota.", ins.Nombre);
                     }
                     else if (ins.UltMesPago != mesActual){
-						Console.WriteLine("{0} - Ultimo mes de pago: {1}", ins.Nombre, (meses)ins.UltMesPago);
+						Console.WriteLine("{0} - Ultimo mes de pago: {1}", ins.Nombre, (Meses)ins.UltMesPago);
 					}
 				}
 			}
 		}
 		
-		public void agregarEntrenadorDeporte (int indiceDeporte, int indiceEntrenador)
+		public void AgregarEntrenadorDeporte (int indiceDeporte, int indiceEntrenador)
 		{
-			((Deporte)deportes[indiceDeporte]).asignarEntrenador((Entrenador)entrenadores[indiceEntrenador]);
+			((Deporte)deportes[indiceDeporte]).AsignarEntrenador((Entrenador)entrenadores[indiceEntrenador]);
 		}
 
-        public void quitarEntrenadorDeporte (int indiceDeporte, int indiceEntrenador)
+        public void QuitarEntrenadorDeporte (int indiceDeporte, int indiceEntrenador)
         {
-            ((Deporte)deportes[indiceDeporte]).removerEntrenador();
+            ((Deporte)deportes[indiceDeporte]).RemoverEntrenador();
         }
 
-        public int buscarEntrenadorDeporte (int dni)
+        public int BuscarEntrenadorDeporte (int dni)
         {
 			for (int i = 0; i < deportes.Count; i++)
 			{
@@ -255,16 +255,16 @@ namespace ClubDeportivo
 			return -1;
         }
 
-        public int cupoInscripto(int indice)
+        public int CupoInscripto(int indice)
 		{
 			return ((Deporte)deportes[indice]).CupoLibre;
 		}
 		
-		public bool existeInscripto(int dni)
+		public bool ExisteInscripto(int dni)
 		{
 			foreach (Deporte dep in deportes) 
 			{
-				if (dep.existeDeportista(dni) != -1)
+				if (dep.ExisteDeportista(dni) != -1)
 				{
 					return true;
 				}
@@ -272,16 +272,16 @@ namespace ClubDeportivo
 			
 			return false;
 		}		
-		
-		public void nuevoInscripto(int indiceDeporte, string nombre, int dni, int edad, int categoria, int nroSocio)
+		/*HEREHEREHEREHERE*/
+		public void NuevoInscripto(int indiceDeporte, string nombre, int dni, int edad, int categoria, int nroSocio)
 		{	
-			if(existeInscripto(dni) == false)
+			if(ExisteInscripto(dni) == false)
 			{
-				if (cupoInscripto(indiceDeporte) == 0){
-					throw new clubCupoExcepcion("Lamentablemente ya no hay cupo.");
+				if (CupoInscripto(indiceDeporte) == 0){
+					throw new ClubCupoExcepcion("Lamentablemente ya no hay cupo.");
 				} 
 				else{
-					((Deporte)deportes[indiceDeporte]).agregarDeportista(nombre, dni, edad, categoria, nroSocio);
+					((Deporte)deportes[indiceDeporte]).AgregarDeportista(nombre, dni, edad, categoria, nroSocio);
 					Console.WriteLine("{0} inscripto correctamente", nombre);
 				}	
 			}
@@ -290,14 +290,14 @@ namespace ClubDeportivo
 			}
 		}
 		
-		public void borrarInscripto(int dni)
+		public void BorrarInscripto(int dni)
 		{
 			int indice = 0;
 			
 			foreach (Deporte dep in deportes) {
-				if((indice = dep.existeDeportista(dni)) != -1)
+				if((indice = dep.ExisteDeportista(dni)) != -1)
 				{
-					dep.eliminarDeportista(indice);
+					dep.EliminarDeportista(indice);
 					Console.WriteLine("Baja realizada con exito.");
 				
 					return;
@@ -306,26 +306,26 @@ namespace ClubDeportivo
 			Console.WriteLine("DNI no encontrado");
 		}
 		
-		public void verValorCuota(int dni)
+		public void VerValorCuota(int dni)
 		{
 			int indice = 0;
 			
 			foreach (Deporte dep in deportes) {
-				if((indice = dep.existeDeportista(dni)) != -1)
+				if((indice = dep.ExisteDeportista(dni)) != -1)
 				{
-                    Console.WriteLine("El valor de la cuota es de ${0}", dep.valorCuota(dni));                    
+                    Console.WriteLine("El valor de la cuota es de ${0}", dep.ValorCuota(dni));                    
 				}
 			}
 		}
 		
-		public bool pagarCuota(int dni)
+		public bool PagarCuota(int dni)
 		{
 			int indice = 0;
 			
 			foreach (Deporte dep in deportes) {
-				if((indice = dep.existeDeportista(dni)) != -1)
+				if((indice = dep.ExisteDeportista(dni)) != -1)
 				{
-					return dep.pagoCuota(dni);
+					return dep.PagoCuota(dni);
 				}
 			}
 			
@@ -333,3 +333,4 @@ namespace ClubDeportivo
 		}
 	}
 }
+/*ARREGLE LO DEL CamelCase*/
