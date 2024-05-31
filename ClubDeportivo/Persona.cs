@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Created by SharpDevelop.
  * User: Soporte
  * Date: 21/05/2024
@@ -36,11 +36,5 @@ namespace ClubDeportivo
 		}
 		
 		/* metodos */
-		/*MÉTODO PARA SABER LA INFORMACIÓN Y DNI DE LA PERSONA*/
-		/*MÉTODO SUJETO A MODIFICACIONES*/
-		protected void InformacionPersona(){
-			Console.WriteLine("Nombre " + nombre + "DNI " + dni);
-			
-		}
 	}
 }

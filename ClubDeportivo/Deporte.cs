@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Created by SharpDevelop.
  * User: Soporte
  * Date: 21/05/2024
@@ -40,7 +40,6 @@ namespace ClubDeportivo
 			this.dia = dia;
 			this.hora = hora;
 			deportistas = new ArrayList();
-			//deportistasSocios = new ArrayList();
 		}
 		
 		/* propiedades */
@@ -101,6 +100,8 @@ namespace ClubDeportivo
 		}
 		
 		/* metodos */
+		
+		/* verifica si el dni ya fue inscripto o no */
 		public int ExisteDeportista(int dni)
 		{
 			Inscripto dep;
@@ -118,6 +119,7 @@ namespace ClubDeportivo
 			return -1;
 		}		
 		
+		/* agrega un nuevo inscripto/deportista */
 		public void AgregarDeportista(string nombre, int dni, int edad, int categoria, int nroSocio)
 		{	
 			if(nroSocio == 0)
@@ -132,40 +134,60 @@ namespace ClubDeportivo
 			cupoLibre -= 1;			
 		}
 		
+		/* elimina un inscripto/deportista */
 		public void EliminarDeportista(int indice)
 		{
 			deportistas.RemoveAt(indice);
 		}
 		
+		/* asigna un enrtenador al deporte */
 		public void AsignarEntrenador(Entrenador ent)
 		{
 			this.entrenador = ent;
 		}
-
+		
+		/* remueve el entrenador */
         public void RemoverEntrenador()
         {
             this.entrenador = null;
         }
 
-        public void ListaDeportistas()
+        /* lista de inscriptos/deportistas  */
+        public ArrayList ListaDeportistas()
 		{
-			foreach (var ins in deportistas) {
+        	ArrayList lista = new ArrayList();
+        	
+			foreach (var ins in deportistas) 
+			{
+        		ArrayList deportista = new ArrayList();
+        		
                 if (ins is Socio)
 				{
-                    Console.WriteLine("Nombre: {0}, DNI: {1}, Edad: {2}, Número de Socio: {3}", ((Socio)ins).Nombre, ((Socio)ins).Dni, ((Socio)ins).Edad, ((Socio)ins).Numero);
+                	deportista.Add(((Socio)ins).Nombre);
+                	deportista.Add(((Socio)ins).Dni);
+                	deportista.Add(((Socio)ins).Edad);
+                	deportista.Add(((Socio)ins).Numero);
+                	lista.Add(deportista);
                 }
 				else
 				{
-                    Console.WriteLine("Nombre: {0}, DNI: {1}, Edad: {2}, Número de Socio: -----", ((Inscripto)ins).Nombre, ((Inscripto)ins).Dni, ((Inscripto)ins).Edad);
+					deportista.Add(((Inscripto)ins).Nombre);
+                	deportista.Add(((Inscripto)ins).Dni);
+                	deportista.Add(((Inscripto)ins).Edad);
+                	deportista.Add(-1);
+                	lista.Add(deportista);
                 }
-                    
 			}
+        	
+        	return lista;
 		}		
 		
+        /* devuelve el valor de la cuota */
 		public float ValorCuota(int dni)
 		{
 			foreach (var ins in deportistas) 
 			{
+				/* verifica si ins es del tipo socio o inscripto para saber si hacere el descuento o no */
                 if (ins is Socio)
                 {
 					if(((Socio)ins).Dni == dni)
@@ -185,15 +207,16 @@ namespace ClubDeportivo
 			return 0;
 		}
 		
+		/* pago de la cuota */
 		public bool PagoCuota(int dni)
 		{
+			/* se toma la fecha actual del la PC */
             DateTime ahora = DateTime.Now;
-            int mesActual = ahora.Month;
 
             foreach (Inscripto ins in deportistas) {
 				if(ins.Dni == dni)
 				{
-					ins.UltMesPago = mesActual;
+					ins.UltMesPago = ahora;
 					
 					return true;
 				}
@@ -203,4 +226,3 @@ namespace ClubDeportivo
 		}
 	}
 }
-/*ARREGLE LO DEL CamelCase*/

@@ -1,0 +1,30 @@
+C:\Users\Soporte\Desktop\Trabajo Integrador\Proyecto_4\obj\Debug\Proyecto_4.csprojResolveAssemblyReference.cache
+C:\Users\Soporte\Desktop\Trabajo Integrador\Proyecto_4\bin\Debug\Proyecto_4.exe.config
+C:\Users\Soporte\Desktop\Trabajo Integrador\Proyecto_4\bin\Debug\Proyecto_4.exe
+C:\Users\Soporte\Desktop\Trabajo Integrador\Proyecto_4\bin\Debug\Proyecto_4.pdb
+C:\Users\Soporte\Desktop\Trabajo Integrador\Proyecto_4\obj\Debug\Proyecto_4.exe
+C:\Users\Soporte\Desktop\Trabajo Integrador\Proyecto_4\obj\Debug\Proyecto_4.pdb
+C:\Users\Iván\Desktop\T_Integrador\obj\Debug\Proyecto_4.csprojResolveAssemblyReference.cache
+C:\Users\Iván\Desktop\T_Integrador\obj\Debug\Proyecto_4.exe
+C:\Users\Iván\Desktop\T_Integrador\bin\Debug\Proyecto_4.exe.config
+C:\Users\Iván\Desktop\T_Integrador\bin\Debug\Proyecto_4.exe
+C:\Users\Iván\Desktop\T_Integrador\bin\Debug\Proyecto_4.pdb
+C:\Users\Iván\Desktop\T_Integrador\obj\Debug\Proyecto_4.pdb
+C:\Users\Soporte\Desktop\Trabajo Final\Proyecto_4_SharpDevelop\bin\Debug\Proyecto_4.exe.config
+C:\Users\Soporte\Desktop\Trabajo Final\Proyecto_4_SharpDevelop\bin\Debug\Proyecto_4.exe
+C:\Users\Soporte\Desktop\Trabajo Final\Proyecto_4_SharpDevelop\bin\Debug\Proyecto_4.pdb
+C:\Users\Soporte\Desktop\Trabajo Final\Proyecto_4_SharpDevelop\obj\Debug\Proyecto_4.csprojResolveAssemblyReference.cache
+C:\Users\Soporte\Desktop\Trabajo Final\Proyecto_4_SharpDevelop\obj\Debug\Proyecto_4.exe
+C:\Users\Soporte\Desktop\Trabajo Final\Proyecto_4_SharpDevelop\obj\Debug\Proyecto_4.pdb
+C:\Users\Ivan\Desktop\Proyecto_4_SharpDevelop\bin\Debug\Proyecto_4.exe.config
+C:\Users\Ivan\Desktop\Proyecto_4_SharpDevelop\bin\Debug\Proyecto_4.exe
+C:\Users\Ivan\Desktop\Proyecto_4_SharpDevelop\bin\Debug\Proyecto_4.pdb
+C:\Users\Ivan\Desktop\Proyecto_4_SharpDevelop\obj\Debug\Proyecto_4.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Desktop\Proyecto_4_SharpDevelop\obj\Debug\Proyecto_4.exe
+C:\Users\Ivan\Desktop\Proyecto_4_SharpDevelop\obj\Debug\Proyecto_4.pdb
+C:\Users\Soporte\Desktop\Trabajo Final\ClubDeportivo\obj\Debug\Proyecto_4.csprojResolveAssemblyReference.cache
+C:\Users\Soporte\Desktop\Trabajo Final\ClubDeportivo\obj\Debug\Proyecto_4.exe
+C:\Users\Soporte\Desktop\Trabajo Final\ClubDeportivo\bin\Debug\Proyecto_4.exe.config
+C:\Users\Soporte\Desktop\Trabajo Final\ClubDeportivo\bin\Debug\Proyecto_4.exe
+C:\Users\Soporte\Desktop\Trabajo Final\ClubDeportivo\bin\Debug\Proyecto_4.pdb
+C:\Users\Soporte\Desktop\Trabajo Final\ClubDeportivo\obj\Debug\Proyecto_4.pdb

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Created by SharpDevelop.
  * User: Soporte
  * Date: 21/05/2024
@@ -27,11 +27,6 @@ namespace ClubDeportivo
 		/* propiedades */
 		
 		/* metodos */
-		/*MÉTODO PARA SABER EL NOMBRE Y DNI DEL ENTRENADOR*/
-		/*MÉTODO SUJETO A MODIFICACIONES*/
-		public void InformacionEntrenador(){
-			Console.WriteLine("Nombre entrenador " + nombre + "DNI del entrenador " + dni);
-		}
 
 	}
 }
