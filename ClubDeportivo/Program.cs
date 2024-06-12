@@ -187,7 +187,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}
@@ -198,7 +198,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}
@@ -209,7 +209,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}
@@ -223,7 +223,7 @@ namespace ClubDeportivo
 						Console.WriteLine("");
 						Console.BackgroundColor = ConsoleColor.DarkRed;
 						Console.ForegroundColor = ConsoleColor.White;
-						Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+						Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 						Console.ResetColor();
 						Console.WriteLine("");
 					}	
@@ -263,7 +263,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}	
@@ -282,7 +282,7 @@ namespace ClubDeportivo
 						Console.WriteLine("");
 						Console.BackgroundColor = ConsoleColor.DarkRed;
 						Console.ForegroundColor = ConsoleColor.White;
-						Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+						Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 						Console.ResetColor();
 						Console.WriteLine("");
 					}
@@ -364,7 +364,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}				
@@ -423,7 +423,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}
@@ -434,7 +434,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}
@@ -451,7 +451,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}
@@ -462,7 +462,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}
@@ -540,7 +540,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}
@@ -560,7 +560,7 @@ namespace ClubDeportivo
 						Console.WriteLine("");
 						Console.BackgroundColor = ConsoleColor.DarkRed;
 						Console.ForegroundColor = ConsoleColor.White;
-						Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+						Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 						Console.ResetColor();
 						Console.WriteLine("");
 					}
@@ -630,7 +630,7 @@ namespace ClubDeportivo
 							Console.WriteLine("");
 							Console.BackgroundColor = ConsoleColor.DarkRed;
 							Console.ForegroundColor = ConsoleColor.White;
-							Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+							Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 							Console.ResetColor();
 							Console.WriteLine("");
 						}
@@ -649,7 +649,7 @@ namespace ClubDeportivo
 								Console.WriteLine("");
 								Console.BackgroundColor = ConsoleColor.DarkRed;
 								Console.ForegroundColor = ConsoleColor.White;
-								Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+								Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 								Console.ResetColor();
 								Console.WriteLine("");
 							}
@@ -753,7 +753,7 @@ namespace ClubDeportivo
 							Console.WriteLine("");
 							Console.BackgroundColor = ConsoleColor.DarkRed;
 							Console.ForegroundColor = ConsoleColor.White;
-							Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+							Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 							Console.ResetColor();
 							Console.WriteLine("");
 						}
@@ -772,7 +772,7 @@ namespace ClubDeportivo
 								Console.WriteLine("");
 								Console.BackgroundColor = ConsoleColor.DarkRed;
 								Console.ForegroundColor = ConsoleColor.White;
-								Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+								Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 								Console.ResetColor();
 								Console.WriteLine("");
 							}
@@ -799,7 +799,7 @@ namespace ClubDeportivo
 							Console.WriteLine("");
 							Console.BackgroundColor = ConsoleColor.DarkRed;
 							Console.ForegroundColor = ConsoleColor.White;
-							Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+							Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 							Console.ResetColor();
 							Console.WriteLine("");
 						}
@@ -818,7 +818,7 @@ namespace ClubDeportivo
 								Console.WriteLine("");
 								Console.BackgroundColor = ConsoleColor.DarkRed;
 								Console.ForegroundColor = ConsoleColor.White;
-								Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+								Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 								Console.ResetColor();
 								Console.WriteLine("");
 							}
@@ -1093,7 +1093,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}			
@@ -1163,7 +1163,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}
@@ -1222,7 +1222,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}
@@ -1287,7 +1287,7 @@ namespace ClubDeportivo
 					Console.WriteLine("");
 					Console.BackgroundColor = ConsoleColor.DarkRed;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 					Console.ResetColor();
 					Console.WriteLine("");
 				}
@@ -1315,7 +1315,7 @@ namespace ClubDeportivo
 						Console.WriteLine("");
 						Console.BackgroundColor = ConsoleColor.DarkRed;
 						Console.ForegroundColor = ConsoleColor.White;
-						Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+						Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 						Console.ResetColor();
 						Console.WriteLine("");
 					}
@@ -1334,7 +1334,7 @@ namespace ClubDeportivo
 							Console.WriteLine("");
 							Console.BackgroundColor = ConsoleColor.DarkRed;
 							Console.ForegroundColor = ConsoleColor.White;
-							Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+							Console.WriteLine("ERROR: No se ingreso un número. Reintente nuevamente.");
 							Console.ResetColor();
 							Console.WriteLine("");
 						}
