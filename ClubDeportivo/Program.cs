@@ -158,6 +158,7 @@ namespace ClubDeportivo
 		public static void InscribirMenu(Club club)
 		{
 			string nombreApellido = "";
+			bool reintento = false;
 			int dni, edad, categoria, nroSocio, selDeporte, contador, indiceEntrenador, resultado;
 			ArrayList lista = new ArrayList();
 			
@@ -181,19 +182,51 @@ namespace ClubDeportivo
 
 
                 Console.WriteLine("Ingrese el DNI.");
-				dni = int.Parse(Console.ReadLine());
+				while(int.TryParse(Console.ReadLine(), out dni) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
 				
 				Console.WriteLine("Ingrese la edad.");
-				edad = int.Parse(Console.ReadLine());
+				while(int.TryParse(Console.ReadLine(), out edad) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
 				
 				Console.WriteLine("Ingrese la categoría.");
-				categoria = int.Parse(Console.ReadLine());
+				while(int.TryParse(Console.ReadLine(), out categoria) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
 				
 				Console.WriteLine("Es Socio? S/N.");			
 				if(Console.ReadLine().ToUpper() == "S")
 				{
 					Console.WriteLine("Ingrese el número de socio.");
-					nroSocio = int.Parse(Console.ReadLine());	
+					while(int.TryParse(Console.ReadLine(), out nroSocio) == false)
+					{
+						Console.WriteLine("");
+						Console.BackgroundColor = ConsoleColor.DarkRed;
+						Console.ForegroundColor = ConsoleColor.White;
+						Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+						Console.ResetColor();
+						Console.WriteLine("");
+					}	
 				} 
 				else
 				{
@@ -225,7 +258,16 @@ namespace ClubDeportivo
                 Console.WriteLine("Deporte:");
 				
                 /* se ingresa el inscripto en el deporte seleccionado y si la opcion es incorrecta vuelve a pedir que seleccione nuevamente */
-                selDeporte = int.Parse(Console.ReadLine());
+				while(int.TryParse(Console.ReadLine(), out selDeporte) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}	
+
                 while ((selDeporte < 1) || (selDeporte > club.Deportes.Count))
                 {
                     Console.WriteLine("");
@@ -234,7 +276,16 @@ namespace ClubDeportivo
                     Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.");
 					Console.ResetColor();
 					Console.WriteLine("");
-                    selDeporte = int.Parse(Console.ReadLine());
+
+					while(int.TryParse(Console.ReadLine(), out selDeporte) == false)
+					{
+						Console.WriteLine("");
+						Console.BackgroundColor = ConsoleColor.DarkRed;
+						Console.ForegroundColor = ConsoleColor.White;
+						Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+						Console.ResetColor();
+						Console.WriteLine("");
+					}
                 }
 
 				resultado = club.NuevoInscripto(selDeporte - 1, nombreApellido, dni, edad, categoria, nroSocio);
@@ -308,8 +359,15 @@ namespace ClubDeportivo
 				Console.ResetColor();
 				Console.WriteLine("");
 				Console.WriteLine("Ingrese el número de DNI.");
-				dni = int.Parse(Console.ReadLine());				
-				
+				while(int.TryParse(Console.ReadLine(), out dni) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}				
 				
 				if(club.BorrarInscripto(dni) != -1)
 				{
@@ -360,10 +418,26 @@ namespace ClubDeportivo
 				nombre = Console.ReadLine();
 				
 				Console.WriteLine("Ingrese la categoría del Deporte.");
-				categoria = int.Parse(Console.ReadLine());
+				while(int.TryParse(Console.ReadLine(), out categoria) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
 				
 				Console.WriteLine("Ingrese el cupo.");
-				cupo = int.Parse(Console.ReadLine());
+				while(int.TryParse(Console.ReadLine(), out cupo) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
 				
 				Console.WriteLine("Ingrese el dia en que se realiza el Deporte.");
 				dia = Console.ReadLine();
@@ -372,10 +446,26 @@ namespace ClubDeportivo
 				hora = Console.ReadLine();
 				
 				Console.WriteLine("Ingrese el valor de la cuota.");
-				cuota = float.Parse(Console.ReadLine());
+				while(float.TryParse(Console.ReadLine(), out cuota) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
 				
 				Console.WriteLine("Ingrese el porcentaje de descuento para Socios.");
-				descuentoSocio = float.Parse(Console.ReadLine());
+				while(float.TryParse(Console.ReadLine(), out descuentoSocio) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
 				
 				/* verifico si el deporte y la categoria ya existe antes de agregarla */				
 				if((indice = club.ExisteDepYCat(nombre, categoria)) != -1)
@@ -445,7 +535,15 @@ namespace ClubDeportivo
 
                 Console.WriteLine("");
                 Console.WriteLine("Eliminar:");
-                selDeporte = int.Parse(Console.ReadLine());
+				while(int.TryParse(Console.ReadLine(), out selDeporte) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
 				
                 /* se verifica que no haya inscriptos en el deporte antes de borrar */
                 while ((selDeporte < 1) || (selDeporte > club.Deportes.Count))
@@ -456,7 +554,16 @@ namespace ClubDeportivo
                     Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.");
 					Console.ResetColor();
 					Console.WriteLine("");
-                    selDeporte = int.Parse(Console.ReadLine());
+
+					while(int.TryParse(Console.ReadLine(), out selDeporte) == false)
+					{
+						Console.WriteLine("");
+						Console.BackgroundColor = ConsoleColor.DarkRed;
+						Console.ForegroundColor = ConsoleColor.White;
+						Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+						Console.ResetColor();
+						Console.WriteLine("");
+					}
                 }
 
                 if (club.EstaVacioDeporte(selDeporte - 1) == true)
@@ -518,8 +625,15 @@ namespace ClubDeportivo
 
                         Console.WriteLine("");
                         Console.WriteLine("Deporte:");
-
-                        selDeporte = int.Parse(Console.ReadLine());
+						while(int.TryParse(Console.ReadLine(), out selDeporte) == false)
+						{
+							Console.WriteLine("");
+							Console.BackgroundColor = ConsoleColor.DarkRed;
+							Console.ForegroundColor = ConsoleColor.White;
+							Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+							Console.ResetColor();
+							Console.WriteLine("");
+						}
 
                         while ((selDeporte < 1) || (selDeporte > listaDep.Count))
                         {
@@ -529,7 +643,16 @@ namespace ClubDeportivo
                             Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.");
 							Console.ResetColor();
 							Console.WriteLine("");
-                            selDeporte = int.Parse(Console.ReadLine());
+
+							while(int.TryParse(Console.ReadLine(), out selDeporte) == false)
+							{
+								Console.WriteLine("");
+								Console.BackgroundColor = ConsoleColor.DarkRed;
+								Console.ForegroundColor = ConsoleColor.White;
+								Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+								Console.ResetColor();
+								Console.WriteLine("");
+							}
                         }
 						
                         Console.Clear();
@@ -625,7 +748,15 @@ namespace ClubDeportivo
                         Console.WriteLine("");
                         Console.WriteLine("Deporte:");
 
-                        selDeporte = int.Parse(Console.ReadLine());
+						while(int.TryParse(Console.ReadLine(), out selDeporte) == false)
+						{
+							Console.WriteLine("");
+							Console.BackgroundColor = ConsoleColor.DarkRed;
+							Console.ForegroundColor = ConsoleColor.White;
+							Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+							Console.ResetColor();
+							Console.WriteLine("");
+						}
 
                         while ((selDeporte < 1) || (selDeporte > listaDep.Count))
                         {
@@ -636,7 +767,15 @@ namespace ClubDeportivo
 							Console.ResetColor();
 							Console.WriteLine("");
 
-                            selDeporte = int.Parse(Console.ReadLine());
+							while(int.TryParse(Console.ReadLine(), out selDeporte) == false)
+							{
+								Console.WriteLine("");
+								Console.BackgroundColor = ConsoleColor.DarkRed;
+								Console.ForegroundColor = ConsoleColor.White;
+								Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+								Console.ResetColor();
+								Console.WriteLine("");
+							}
                         }
 
                         // seleccion de la categoría
@@ -655,7 +794,15 @@ namespace ClubDeportivo
                         Console.WriteLine("");
                         Console.WriteLine("Categoría:");
 
-                        selCategoria = int.Parse(Console.ReadLine());
+						while(int.TryParse(Console.ReadLine(), out selCategoria) == false)
+						{
+							Console.WriteLine("");
+							Console.BackgroundColor = ConsoleColor.DarkRed;
+							Console.ForegroundColor = ConsoleColor.White;
+							Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+							Console.ResetColor();
+							Console.WriteLine("");
+						}
 
                         while ((selCategoria < 1) || (selCategoria > listaCat.Count))
                         {
@@ -666,7 +813,15 @@ namespace ClubDeportivo
 							Console.ResetColor();
 							Console.WriteLine("");
 
-                            selCategoria = int.Parse(Console.ReadLine());
+							while(int.TryParse(Console.ReadLine(), out selCategoria) == false)
+							{
+								Console.WriteLine("");
+								Console.BackgroundColor = ConsoleColor.DarkRed;
+								Console.ForegroundColor = ConsoleColor.White;
+								Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+								Console.ResetColor();
+								Console.WriteLine("");
+							}
                         }
 
                         // impresion de la lista de inscriptos
@@ -933,7 +1088,15 @@ namespace ClubDeportivo
 				Console.WriteLine("");
 				
 				Console.WriteLine("Ingrese el número de DNI.");
-				dni = int.Parse(Console.ReadLine());				
+				while(int.TryParse(Console.ReadLine(), out dni) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}			
 				
 				if(club.ExisteInscripto(dni) == true)
 				{
@@ -995,7 +1158,15 @@ namespace ClubDeportivo
                 nombre = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(nombre);
 
                 Console.WriteLine("Ingrese el número de DNI.");
-                dni = int.Parse(Console.ReadLine());
+				while(int.TryParse(Console.ReadLine(), out dni) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
 				
                 /* verifica si el entrenador ya existe o no antes de darlo de alta */
                 if (club.BuscarEntrenador(dni) == -1)
@@ -1046,7 +1217,15 @@ namespace ClubDeportivo
                 Console.WriteLine("");
 
                 Console.WriteLine("Ingrese el número de DNI.");
-                dni = int.Parse(Console.ReadLine());
+				while(int.TryParse(Console.ReadLine(), out dni) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
 
                 /* busca si el entrenador existe y luego lo borrar de la lista de entrenadores y del deporte */
                 if ((indiceEntrenador = club.BuscarEntrenador(dni)) != -1)
@@ -1103,7 +1282,15 @@ namespace ClubDeportivo
                 Console.WriteLine("");
 
                 Console.WriteLine("Ingrese el número de DNI.");
-                dni = int.Parse(Console.ReadLine());
+				while(int.TryParse(Console.ReadLine(), out dni) == false)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
 
                 if (club.BuscarEntrenador(dni) != -1)
                 {
@@ -1123,7 +1310,15 @@ namespace ClubDeportivo
                     Console.WriteLine("");
                     Console.WriteLine("Deporte:");
 
-                    selDeporte = int.Parse(Console.ReadLine());
+					while(int.TryParse(Console.ReadLine(), out selDeporte) == false)
+					{
+						Console.WriteLine("");
+						Console.BackgroundColor = ConsoleColor.DarkRed;
+						Console.ForegroundColor = ConsoleColor.White;
+						Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+						Console.ResetColor();
+						Console.WriteLine("");
+					}
 
                     while ((selDeporte < 1) || (selDeporte > club.Deportes.Count))
                     {
@@ -1134,7 +1329,15 @@ namespace ClubDeportivo
 						Console.ResetColor();
 						Console.WriteLine("");
 
-                        selDeporte = int.Parse(Console.ReadLine());
+						while(int.TryParse(Console.ReadLine(), out selDeporte) == false)
+						{
+							Console.WriteLine("");
+							Console.BackgroundColor = ConsoleColor.DarkRed;
+							Console.ForegroundColor = ConsoleColor.White;
+							Console.WriteLine("ERROR: No se ingreso un numero. Reintente nuevamente.");
+							Console.ResetColor();
+							Console.WriteLine("");
+						}
                     }
 
                     club.AsignarEntrenadorADeporte(selDeporte - 1, dni);
