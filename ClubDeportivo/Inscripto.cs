@@ -17,9 +17,9 @@ namespace ClubDeportivo
 	public class Inscripto : Persona
 	{
 		/* atributos */
-		private int edad;
-		private int categoria;
-		private DateTime ultMesPago;
+		protected int edad;
+		protected int categoria;
+		protected DateTime ultMesPago;
 		
 		/* constructor */
 		public Inscripto(string nombre, int dni, int edad, int categoria) : base(nombre, dni)

@@ -14,9 +14,7 @@ using System.Net;
 namespace ClubDeportivo
 {
 	class Program
-	{
-		
-		
+	{		
 		public static void Main(string[] args)
 		{
 			string selec = "";
@@ -82,7 +80,7 @@ namespace ClubDeportivo
 
                     /* asignar entrenador a un deporte */
                     case "9":
-                        AsignarEntrenador(club);
+                        SeleccionarEntrenador(club);
                         break;
 					
                     /* salir de la aplicacion */
@@ -124,7 +122,7 @@ namespace ClubDeportivo
 			Console.WriteLine(" 5 - Ver Lista de Inscriptos y Deudores.");
 			Console.WriteLine(" 6 - Pago de Cuota.");			 
 			Console.WriteLine(" 7 - Ingresar un nuevo Entrenador.");			
-			Console.WriteLine(" 8 - Eliminar un Enrenador.");
+			Console.WriteLine(" 8 - Eliminar un Entrenador.");
             Console.WriteLine(" 9 - Asignar Entrenador a un Deporte.");
             Console.WriteLine(" X - Salir.");
 			Console.WriteLine("");
@@ -160,7 +158,7 @@ namespace ClubDeportivo
 		public static void InscribirMenu(Club club)
 		{
 			string nombreApellido = "";
-			int dni, edad, categoria, nroSocio, selDeporte, contador;
+			int dni, edad, categoria, nroSocio, selDeporte, contador, indiceEntrenador, resultado;
 			ArrayList lista = new ArrayList();
 			
 			do{
@@ -210,13 +208,15 @@ namespace ClubDeportivo
                 contador = 1;
                 foreach (Deporte dep in club.Deportes)
                 {
-					if(dep.Entrenador == null)
+					if(dep.EntrenadorDni == 0)
 					{
                         Console.WriteLine("{0} - Deporte:{1}, Categoria: {2}, Entrenador: SIN ASIGNAR AÚN, Día: {3}, Hora: {4}", contador, dep.Nombre, dep.Categoria,  dep.dia, dep.hora);
                     }
 					else
 					{
-                        Console.WriteLine("{0} - Deporte:{1}, Categoria: {2}, Entrenador: {3}, Día: {4}, Hora: {5}", contador, dep.Nombre, dep.Categoria, dep.Entrenador.Nombre, dep.dia, dep.hora);
+                        /* se obtiene el nombre del entrenado para agregarlo a la lista */
+						indiceEntrenador = club.BuscarEntrenador(dep.EntrenadorDni);
+						Console.WriteLine("{0} - Deporte:{1}, Categoría: {2}, Entrenador: {3}, Día: {4}, Hora: {5}", contador, dep.Nombre, dep.Categoria, ((Entrenador)club.Entrenadores[indiceEntrenador]).Nombre, dep.dia, dep.hora);
                     }
                     contador++;
                 }
@@ -229,13 +229,60 @@ namespace ClubDeportivo
                 while ((selDeporte < 1) || (selDeporte > club.Deportes.Count))
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.\n");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+        			Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.");
+					Console.ResetColor();
+					Console.WriteLine("");
                     selDeporte = int.Parse(Console.ReadLine());
                 }
 
-                club.NuevoInscripto(selDeporte - 1, nombreApellido, dni, edad, categoria, nroSocio);
+				resultado = club.NuevoInscripto(selDeporte - 1, nombreApellido, dni, edad, categoria, nroSocio);
 
-				Console.WriteLine("");				
+				try
+				{
+					if (resultado == 0){
+						throw new ClubCupoExcepcion();
+					} 
+					else if (resultado == 1)
+					{
+						Console.WriteLine("");
+						Console.BackgroundColor = ConsoleColor.DarkGreen;
+						Console.ForegroundColor = ConsoleColor.White;
+						Console.WriteLine("{0} inscripto correctamente.", nombreApellido);
+						Console.ResetColor();
+						Console.WriteLine("");
+					}
+					else
+					{
+						Console.WriteLine("");
+						Console.BackgroundColor = ConsoleColor.DarkRed;
+        				Console.ForegroundColor = ConsoleColor.White;
+						Console.Write("{0} ya se encuentra inscripto.", nombreApellido);
+						Console.ResetColor();
+						Console.WriteLine("");
+					}	
+				}
+				catch(ClubCupoExcepcion)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+        			Console.ForegroundColor = ConsoleColor.White;
+					Console.Write("Lamentablemente ya no hay cupo.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
+				catch(Exception e)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+        			Console.ForegroundColor = ConsoleColor.White;
+					Console.Write("Error: {0}", e);
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
+
+				Console.WriteLine("");
 				Console.WriteLine("¿Desea continuar con la inscripción? S/N");
 				
 			} while(Console.ReadLine().ToUpper() == "S");							
@@ -262,9 +309,27 @@ namespace ClubDeportivo
 				Console.WriteLine("");
 				Console.WriteLine("Ingrese el número de DNI.");
 				dni = int.Parse(Console.ReadLine());				
-				club.BorrarInscripto(dni);
 				
-				Console.WriteLine("");
+				
+				if(club.BorrarInscripto(dni) != -1)
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkGreen;
+        			Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("Baja realizada con exito.");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
+				else
+				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+        			Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("DNI no encontrado");
+					Console.ResetColor();
+					Console.WriteLine("");
+				}
+				
 				Console.WriteLine("¿Desea borrar a alguien mas? S/N");
 				
 			} while (Console.ReadLine().ToUpper() == "S");
@@ -315,15 +380,25 @@ namespace ClubDeportivo
 				/* verifico si el deporte y la categoria ya existe antes de agregarla */				
 				if((indice = club.ExisteDepYCat(nombre, categoria)) != -1)
 				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+        			Console.ForegroundColor = ConsoleColor.White;
 					Console.WriteLine("El deporte \"{0}\" y la categoria {1} ya existe.", nombre, categoria);
+					Console.ResetColor();
+					Console.WriteLine("");
 				}
 				else
 				{
 					club.AgregarDeporte(nombre, categoria, cupo, cuota, descuentoSocio, dia, hora);
+
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkGreen;
+        			Console.ForegroundColor = ConsoleColor.White;
 					Console.WriteLine("El deporte se agrego correctamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
 				}
 				
-				Console.WriteLine("");
 				Console.WriteLine("¿Desea agregar otro Deporte? S/N");				
 			} while (Console.ReadLine().ToUpper() == "S");
 		}
@@ -331,7 +406,7 @@ namespace ClubDeportivo
 		/* borrar un deporte */
 		public static void BorrarDeporte(Club club)
 		{
-			int contador, selDeporte;
+			int contador, selDeporte, indiceEntrenador;
 			
 			do{
 				Console.Clear();
@@ -355,13 +430,15 @@ namespace ClubDeportivo
 				contador = 1;
 				foreach (Deporte dep in club.Deportes)
 				{
-                    if (dep.Entrenador == null)
+                    if (dep.EntrenadorDni == 0)
                     {
                         Console.WriteLine("{0} - Deporte:{1}, Categoría: {2}, Entrenador: NO TIENE , Día: {3}, Hora: {4}", contador, dep.Nombre, dep.Categoria, dep.dia, dep.hora);
                     }
                     else
                     {
-                        Console.WriteLine("{0} - Deporte:{1}, Categoría: {2}, Entrenador: {3}, Día: {4}, Hora: {5}", contador, dep.Nombre, dep.Categoria, dep.Entrenador.Nombre, dep.dia, dep.hora);
+                        /* se obtiene el nombre del entrenado para agregarlo a la lista */
+						indiceEntrenador = club.BuscarEntrenador(dep.EntrenadorDni);
+						Console.WriteLine("{0} - Deporte:{1}, Categoría: {2}, Entrenador: {3}, Día: {4}, Hora: {5}", contador, dep.Nombre, dep.Categoria, ((Entrenador)club.Entrenadores[indiceEntrenador]).Nombre, dep.dia, dep.hora);
                     }
 					contador++;
                 }
@@ -373,21 +450,36 @@ namespace ClubDeportivo
                 /* se verifica que no haya inscriptos en el deporte antes de borrar */
                 while ((selDeporte < 1) || (selDeporte > club.Deportes.Count))
                 {
-                    Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.\n");
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+        			Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.");
+					Console.ResetColor();
+					Console.WriteLine("");
                     selDeporte = int.Parse(Console.ReadLine());
                 }
 
                 if (club.EstaVacioDeporte(selDeporte - 1) == true)
                 {
                     club.EliminarDeporte(selDeporte - 1);
+
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkGreen;
+        			Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("El deporte elimino correctamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
                 }
                 else
                 {
-                    Console.WriteLine("El deporte que intenta eliminar tiene inscriptos y NO SE PUEDE ELIMINAR");
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+        			Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("El deporte que intenta eliminar tiene inscriptos y NO SE PUEDE ELIMINAR.");
+					Console.ResetColor();
+					Console.WriteLine("");
                 }
 				
-				Console.WriteLine("");
 				Console.WriteLine("¿Desea borrar algún reporte mas? S/N");
 				
 			} while (Console.ReadLine().ToUpper() == "S");
@@ -396,7 +488,7 @@ namespace ClubDeportivo
 		/* submenu para mostrar lista de inscriptos y deudores */
 		public static void SubMenuListas(Club club)
 		{
-			string selec;
+			string selec, mes = "";			
 			int selDeporte, selCategoria;
 			
 			ArrayList lista = new ArrayList();
@@ -432,7 +524,11 @@ namespace ClubDeportivo
                         while ((selDeporte < 1) || (selDeporte > listaDep.Count))
                         {
                             Console.WriteLine("");
-                            Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.\n");
+							Console.BackgroundColor = ConsoleColor.DarkRed;
+        					Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.");
+							Console.ResetColor();
+							Console.WriteLine("");
                             selDeporte = int.Parse(Console.ReadLine());
                         }
 						
@@ -534,7 +630,12 @@ namespace ClubDeportivo
                         while ((selDeporte < 1) || (selDeporte > listaDep.Count))
                         {
                             Console.WriteLine("");
-                            Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.\n");
+							Console.BackgroundColor = ConsoleColor.DarkRed;
+        					Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.");
+							Console.ResetColor();
+							Console.WriteLine("");
+
                             selDeporte = int.Parse(Console.ReadLine());
                         }
 
@@ -559,7 +660,12 @@ namespace ClubDeportivo
                         while ((selCategoria < 1) || (selCategoria > listaCat.Count))
                         {
                             Console.WriteLine("");
-                            Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.\n");
+							Console.BackgroundColor = ConsoleColor.DarkRed;
+        					Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.");
+							Console.ResetColor();
+							Console.WriteLine("");
+
                             selCategoria = int.Parse(Console.ReadLine());
                         }
 
@@ -633,9 +739,7 @@ namespace ClubDeportivo
                         	Console.WriteLine("");
                         	Console.WriteLine("No hay inscriptos en {0} en la categoría {1}.", ((Deporte)listaDep[selDeporte - 1]).Nombre, ((Deporte)listaCat[selCategoria - 1]).Categoria);
                         }
-                        
-                        
-                        
+                                                                        
                         Console.WriteLine("");
                         Console.Write("Pulse una tecla para continuar . . . ");
                         Console.ReadKey(true);
@@ -763,21 +867,22 @@ namespace ClubDeportivo
 											break;
 										
 										case 2:
+											nroSocio = (int)d;											
 											dato++;
 											break;
 											
 										case 3:
-											nroSocio = (int)d;
+											mes = (string)d;
 											break;
 									}
 								}
 								
 								if(nroSocio == -1)
 								{
-									Console.WriteLine("Nombre: {0}, DNI: {1}, Número de Socio: -----", nombre, dni);
+									Console.WriteLine("Nombre: {0}, DNI: {1}, Número de Socio: -----, Ultimo mes de pago: {2}", nombre, dni, mes);
 								}
 								else{
-									Console.WriteLine("Nombre: {0}, DNI: {1}, Número de Socio: {2}", nombre, dni, nroSocio);
+									Console.WriteLine("Nombre: {0}, DNI: {1}, Número de Socio: {2}, Ultimo mes de pago: {3}", nombre, dni, nroSocio, mes);
 								}
 							}
                         }
@@ -832,23 +937,32 @@ namespace ClubDeportivo
 				
 				if(club.ExisteInscripto(dni) == true)
 				{
-					Console.WriteLine("El valor de la cuota es de ${0}\n", club.VerValorCuota(dni)); 
-					
+					Console.WriteLine("El valor de la cuota es de ${0}", club.VerValorCuota(dni)); 
+					Console.WriteLine("");
 					Console.WriteLine("¿Se procede a registrar el pago? S/N");
 					
 					if(Console.ReadLine().ToUpper() == "S"){
 						if(club.PagarCuota(dni))
 						{
+							Console.WriteLine("");
+							Console.BackgroundColor = ConsoleColor.DarkGreen;
+        					Console.ForegroundColor = ConsoleColor.White;
 							Console.WriteLine("Pago realizado.");
+							Console.ResetColor();
+							Console.WriteLine("");
 						}
 					}
 				}
 				else
 				{
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+        			Console.ForegroundColor = ConsoleColor.White;
 					Console.WriteLine("¡El DNI ingresado no existe!");
+					Console.ResetColor();
+					Console.WriteLine("");
 				}
 				
-				Console.WriteLine("");
 				Console.WriteLine("¿Desea ingresar otro pago? S/N");
 				
 			} while (Console.ReadLine().ToUpper() == "S");
@@ -888,14 +1002,23 @@ namespace ClubDeportivo
                 {
                     club.AgregarEntrenador(nombre, dni);
 
-                    Console.WriteLine("Entrenador ingresado corectamente.");
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkGreen;
+        			Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("Entrenador ingresado corectamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
                 }
                 else
                 {
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+        			Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Entrenador ya ingresado.");
+					Console.ResetColor();
+					Console.WriteLine("");
                 }
 
-                Console.WriteLine("");
                 Console.WriteLine("¿Desea ingresar otro Entrenador? S/N");
 
             } while (Console.ReadLine().ToUpper() == "S");
@@ -935,21 +1058,30 @@ namespace ClubDeportivo
                         club.QuitarEntrenadorDeporte(indiceDep, dni);
                     }					
                     
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkGreen;
+	        		Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Entrenador eliminado correctamete.");
+					Console.ResetColor();
+					Console.WriteLine("");
                 }
                 else
                 {
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+	        		Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("El DNI ingresado no corresponde a ningun Entrenador.");
+					Console.ResetColor();
+					Console.WriteLine("");
                 }
 
-                Console.WriteLine("");
                 Console.WriteLine("¿Desea eliminar otro Entrenador? S/N");
 
             } while (Console.ReadLine().ToUpper() == "S");
         }
 
         /* asigna un entrenador a un deporte */
-        public static void AsignarEntrenador(Club club)
+        public static void SeleccionarEntrenador(Club club)
         {
             int dni, selDeporte;
             int contador = 1;
@@ -981,7 +1113,7 @@ namespace ClubDeportivo
                     contador = 1;
                     foreach (Deporte dep in club.Deportes)
                     {
-						if (dep.Entrenador == null)
+						if (dep.EntrenadorDni == 0)
 						{
                             Console.WriteLine("{0} - Deporte:{1}, Categoria: {2}, Día: {3}, Hora: {4}", contador, dep.Nombre, dep.Categoria, dep.dia, dep.hora);
                             contador++;
@@ -996,21 +1128,35 @@ namespace ClubDeportivo
                     while ((selDeporte < 1) || (selDeporte > club.Deportes.Count))
                     {
                         Console.WriteLine("");
-                        Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.\n");
+						Console.BackgroundColor = ConsoleColor.DarkRed;
+	        			Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("ERROR en la selección del deporte. Vuelva a intentarlo.");
+						Console.ResetColor();
+						Console.WriteLine("");
+
                         selDeporte = int.Parse(Console.ReadLine());
                     }
 
                     club.AsignarEntrenadorADeporte(selDeporte - 1, dni);
 
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkGreen;
+	        		Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Entrenador asignado correctamente.");
+					Console.ResetColor();
+					Console.WriteLine("");
                 }
                 else
                 {
+					Console.WriteLine("");
+					Console.BackgroundColor = ConsoleColor.DarkRed;
+	        		Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("El DNI ingresado no corresponde a ningun Entrenador.");
+					Console.ResetColor();
+					Console.WriteLine("");
                 }
 
-                Console.WriteLine("");
-                Console.WriteLine("¿Desea ingresar otro Entrenador? S/N");
+                Console.WriteLine("¿Desea asignar otro Entrenador? S/N");
 
             } while (Console.ReadLine().ToUpper() == "S");
         }

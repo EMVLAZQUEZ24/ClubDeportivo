@@ -54,6 +54,11 @@ namespace ClubDeportivo
 			get { return deportes; }
 		}
 
+		public ArrayList Entrenadores
+		{
+			get { return entrenadores; }
+		}
+
         /* metodos */
 
         /* Entrenadores -----------------------------------------------------------*/
@@ -94,7 +99,7 @@ namespace ClubDeportivo
 			{
 				if(ent.Dni == dni)
 				{
-                    ((Deporte)deportes[indice]).AsignarEntrenador(ent);
+                    ((Deporte)deportes[indice]).AsignarEntrenador(dni);
                 }
 			}			
         }
@@ -268,30 +273,31 @@ namespace ClubDeportivo
 			DateTime ahora = DateTime.Now;
 			DateTime nunca = new DateTime(2000, 1, 1, 0, 0, 0);
 			ArrayList lista = new ArrayList();
-			//ArrayList deportista = new ArrayList();
-			ArrayList datos = new ArrayList();
-			
+			ArrayList datos;
+						
             foreach (Deporte dep in deportes) 
             {
             	if(dep.Deportistas.Count > 0)
             	{
             		foreach (var ins in dep.Deportistas) 
 					{
+						datos = new ArrayList();
+
 	            		if (ins is Socio)
 	            		{
 	            			if (DateTime.Compare(((Socio)ins).UltMesPago, nunca) == 0)
 							{
 								datos.Add(((Socio)ins).Nombre);
-								datos.Add(-1);
-								
-								//Console.WriteLine("{0} - Aún no a abonado ninguna cuota.", ins.Nombre);
+								datos.Add(((Socio)ins).Dni);
+								datos.Add(((Socio)ins).Numero);
+								datos.Add("-----");
 			               	}
 			                else if (DateTime.Compare(((Socio)ins).UltMesPago, ahora) < 0)
 			                {
 								datos.Add(((Socio)ins).Nombre);
-								datos.Add(((Socio)ins).UltMesPago.Month);
-									
-								//Console.WriteLine("{0} - Ultimo mes de pago: {1}", ins.Nombre, (meses)ins.UltMesPago.Month);
+								datos.Add(((Socio)ins).Dni);
+								datos.Add(((Socio)ins).Numero);
+								datos.Add((meses)(((Socio)ins).UltMesPago.Month));
 							}
 	            		}
 	            		else
@@ -299,20 +305,20 @@ namespace ClubDeportivo
 	            			if (DateTime.Compare(((Inscripto)ins).UltMesPago, nunca) == 0)
 							{
 								datos.Add(((Inscripto)ins).Nombre);
+								datos.Add(((Inscripto)ins).Dni);
 								datos.Add(-1);
-								
-								//Console.WriteLine("{0} - Aún no a abonado ninguna cuota.", ins.Nombre);
+								datos.Add("-----");
 		                    }
 		                    else if (DateTime.Compare(((Inscripto)ins).UltMesPago, ahora) < 0){
 								datos.Add(((Inscripto)ins).Nombre);
-								datos.Add(((Inscripto)ins).UltMesPago.Month);
-								
-								//Console.WriteLine("{0} - Ultimo mes de pago: {1}", ins.Nombre, (meses)ins.UltMesPago.Month);
+								datos.Add(((Inscripto)ins).Dni);
+								datos.Add(-1);
+								datos.Add((meses)(((Inscripto)ins).UltMesPago.Month));							
 							}
 	            		}
-						
-						lista.Add(datos);					
-	            	}  
+
+						lista.Add(datos);																
+	            	}					
             	}
 			}
 			
@@ -322,7 +328,7 @@ namespace ClubDeportivo
 		/* agrega un entrenador a un deporte */
 		public void AgregarEntrenadorDeporte (int indiceDeporte, int indiceEntrenador)
 		{
-			((Deporte)deportes[indiceDeporte]).AsignarEntrenador((Entrenador)entrenadores[indiceEntrenador]);
+			((Deporte)deportes[indiceDeporte]).AsignarEntrenador(((Entrenador)entrenadores[indiceEntrenador]).Dni);
 		}
 
 		/* quita un entrenador de un deporte */
@@ -336,7 +342,7 @@ namespace ClubDeportivo
         {
 			for (int i = 0; i < deportes.Count; i++)
 			{
-				if (((Deporte)deportes[i]).Entrenador.Dni == dni)
+				if (((Deporte)deportes[i]).EntrenadorDni == dni)
 				{
 					return i;
 				}
@@ -365,62 +371,38 @@ namespace ClubDeportivo
 		}		
 		
 		/* inscribe a un nuevo inscripto/deportista */
-		public void NuevoInscripto(int indiceDeporte, string nombre, int dni, int edad, int categoria, int nroSocio)
+		public int NuevoInscripto(int indiceDeporte, string nombre, int dni, int edad, int categoria, int nroSocio)
 		{	
 			if(ExisteInscripto(dni) == false)
 			{
-				try
-				{
-					if (CupoInscripto(indiceDeporte) == 0){
-						throw new ClubCupoExcepcion();
+				if (CupoInscripto(indiceDeporte) == 0){
+					return 0;
 				} 
 				else{
 					((Deporte)deportes[indiceDeporte]).AgregarDeportista(nombre, dni, edad, categoria, nroSocio);
-					Console.BackgroundColor = ConsoleColor.DarkGreen;
-        			Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("\n{0} inscripto correctamente", nombre);
-					Console.ResetColor();
+					return 1;
 				}	
-				}
-				catch(ClubCupoExcepcion)
-				{
-					Console.BackgroundColor = ConsoleColor.DarkRed;
-        			Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("\nLamentablemente ya no hay cupo.");
-					Console.ResetColor();
-				}
-				catch(Exception e)
-				{
-					Console.WriteLine("Error: {0}", e);
-				}
 				
 			}
 			else{
-				Console.BackgroundColor = ConsoleColor.DarkYellow;
-        		Console.ForegroundColor = ConsoleColor.Black;
-				Console.WriteLine("\n{0} ya se encuentra inscripto", nombre);
-				Console.ResetColor();
+				return -1;
 			}
 		}
 		
 		/* borra un inscripto/deportista */
-		public void BorrarInscripto(int dni)
+		public int BorrarInscripto(int dni)
 		{
 			int indice = 0;
 			
 			foreach (Deporte dep in deportes) {
 				if((indice = dep.ExisteDeportista(dni)) != -1)
 				{
-					dep.EliminarDeportista(indice);
-					Console.BackgroundColor = ConsoleColor.DarkGreen;
-        			Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine("\nBaja realizada con exito.");
-					Console.ResetColor();
-				
-					return;
+					dep.EliminarDeportista(indice);									
+					return 1;
 				}
 			}
-			Console.WriteLine("DNI no encontrado");
+
+			return -1;			
 		}
 		
 		/* devuelve el valor de la cuota */

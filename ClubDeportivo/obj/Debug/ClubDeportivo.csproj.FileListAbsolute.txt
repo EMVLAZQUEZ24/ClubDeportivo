@@ -4,3 +4,9 @@ D:\_UNAJ\Materias\Algoritmos y Programación\Trabajo Final\ClubDeportivo\ClubDep
 D:\_UNAJ\Materias\Algoritmos y Programación\Trabajo Final\ClubDeportivo\ClubDeportivo\obj\Debug\ClubDeportivo.csprojResolveAssemblyReference.cache
 D:\_UNAJ\Materias\Algoritmos y Programación\Trabajo Final\ClubDeportivo\ClubDeportivo\obj\Debug\ClubDeportivo.exe
 D:\_UNAJ\Materias\Algoritmos y Programación\Trabajo Final\ClubDeportivo\ClubDeportivo\obj\Debug\ClubDeportivo.pdb
+C:\Users\Ivan\Desktop\ClubDeportivo\ClubDeportivo-main\ClubDeportivo\bin\Debug\ClubDeportivo.exe.config
+C:\Users\Ivan\Desktop\ClubDeportivo\ClubDeportivo-main\ClubDeportivo\bin\Debug\ClubDeportivo.exe
+C:\Users\Ivan\Desktop\ClubDeportivo\ClubDeportivo-main\ClubDeportivo\bin\Debug\ClubDeportivo.pdb
+C:\Users\Ivan\Desktop\ClubDeportivo\ClubDeportivo-main\ClubDeportivo\obj\Debug\ClubDeportivo.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Desktop\ClubDeportivo\ClubDeportivo-main\ClubDeportivo\obj\Debug\ClubDeportivo.exe
+C:\Users\Ivan\Desktop\ClubDeportivo\ClubDeportivo-main\ClubDeportivo\obj\Debug\ClubDeportivo.pdb

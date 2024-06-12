@@ -25,7 +25,7 @@ namespace ClubDeportivo
 		}
 		
 		/* propiedades */
-		
+
 		/* metodos */
 
 	}

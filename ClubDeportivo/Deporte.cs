@@ -18,7 +18,7 @@ namespace ClubDeportivo
 	{
 		/* atributos */
 		public string nombre;
-		public Entrenador entrenador;		
+		public int entrenadorDni;		
 		public int categoria;
 		public int cupo;
 		public int cupoLibre;
@@ -43,10 +43,10 @@ namespace ClubDeportivo
 		}
 		
 		/* propiedades */
-		public Entrenador Entrenador
+		public int EntrenadorDni
 		{
-			get { return entrenador; }
-			set { entrenador = value; }
+			get { return entrenadorDni; }
+			set { entrenadorDni = value; }
 		}
 		
 		public string Nombre
@@ -141,15 +141,15 @@ namespace ClubDeportivo
 		}
 		
 		/* asigna un enrtenador al deporte */
-		public void AsignarEntrenador(Entrenador ent)
+		public void AsignarEntrenador(int dni)
 		{
-			this.entrenador = ent;
+			this.entrenadorDni = dni;
 		}
 		
 		/* remueve el entrenador */
         public void RemoverEntrenador()
         {
-            this.entrenador = null;
+            this.entrenadorDni = 0;
         }
 
         /* lista de inscriptos/deportistas  */
