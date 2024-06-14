@@ -291,13 +291,23 @@ namespace ClubDeportivo
 								datos.Add(((Socio)ins).Dni);
 								datos.Add(((Socio)ins).Numero);
 								datos.Add("-----");
+								lista.Add(datos);
 			               	}
-			                else if (DateTime.Compare(((Socio)ins).UltMesPago, ahora) < 0)
+			                else if (((Socio)ins).UltMesPago.Year < ahora.Year)
 			                {
 								datos.Add(((Socio)ins).Nombre);
 								datos.Add(((Socio)ins).Dni);
 								datos.Add(((Socio)ins).Numero);
 								datos.Add((meses)(((Socio)ins).UltMesPago.Month));
+								lista.Add(datos);
+							}
+			                else if (((Socio)ins).UltMesPago.Month < ahora.Month)
+			                {
+								datos.Add(((Socio)ins).Nombre);
+								datos.Add(((Socio)ins).Dni);
+								datos.Add(((Socio)ins).Numero);
+								datos.Add((meses)(((Socio)ins).UltMesPago.Month));
+								lista.Add(datos);
 							}
 	            		}
 	            		else
@@ -308,16 +318,25 @@ namespace ClubDeportivo
 								datos.Add(((Inscripto)ins).Dni);
 								datos.Add(-1);
 								datos.Add("-----");
+								lista.Add(datos);
 		                    }
-		                    else if (DateTime.Compare(((Inscripto)ins).UltMesPago, ahora) < 0){
+		                    else if (((Inscripto)ins).UltMesPago.Year < ahora.Year)
+		                    {
 								datos.Add(((Inscripto)ins).Nombre);
 								datos.Add(((Inscripto)ins).Dni);
 								datos.Add(-1);
-								datos.Add((meses)(((Inscripto)ins).UltMesPago.Month));							
+								datos.Add((meses)(((Inscripto)ins).UltMesPago.Month));
+								lista.Add(datos);
 							}
-	            		}
-
-						lista.Add(datos);																
+		                    else if (((Inscripto)ins).UltMesPago.Month < ahora.Month)
+		                    {
+								datos.Add(((Inscripto)ins).Nombre);
+								datos.Add(((Inscripto)ins).Dni);
+								datos.Add(-1);
+								datos.Add((meses)(((Inscripto)ins).UltMesPago.Month));
+								lista.Add(datos);
+							}
+	            		}																					
 	            	}					
             	}
 			}
