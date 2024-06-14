@@ -89,8 +89,13 @@ namespace ClubDeportivo
 					
 					/* mensaje de error el ingresar una opcion incorrecta */
 					default:
+						Console.WriteLine("");
+						Console.BackgroundColor = ConsoleColor.DarkRed;
+						Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Opción incorrecta. Vuelva a intentarlo.");
-                        Console.Write("Presione cualquier tecla para continuar ...");
+						Console.ResetColor();			
+						Console.WriteLine("");
+                        Console.Write("Presione cualquier tecla para continuar ...");						
                         Console.ReadKey(true);
                         break;
                 }
